@@ -1,13 +1,26 @@
 SpecConverter
 
 == DESCRIPTION:
-  Simple converter to go to test/spec style.
+  Simple converter to go from test-unit or dust style tests to test-spec (http://rubyforge.org/projects/test-spec) specs.
 
 == FEATURES/PROBLEMS:
-	This will change all files in place, so make sure you are properly backed up and/or committed to SVN.
+  This will change all files in place!!  Make sure you are properly backed up and/or committed to SVN before running.
 	
 == INSTALL:
 * sudo gem install spec_converter
+
+== USAGE:
+Assuming your project is at /work/project/:
+
+  cd /work/project
+  spec_converter
+
+== URLS:
+
+trac:				http://opensource.thinkrelevance.com/	
+svn trunk: 	https://opensource.thinkrelevance.com/svn/spec_converter/trunk
+rubyforge: 	http://spec-converter.rubyforge.org
+rdocs:     	http://spec-converter.rubyforge.org/doc
 
 == LICENSE:
 
