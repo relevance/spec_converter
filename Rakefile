@@ -7,9 +7,9 @@ require 'rcov/rcovtask'
 
 Hoe.new('SpecConverter', SpecConverter::VERSION) do |p|
   p.name = 'spec_converter'
-  p.summary = "Convert your tests to test/spec style"
+  p.summary = "Convert your tests to test/spec specs"
   p.author = "Relevance"
-  p.email = "rob@thinkrelevance.com"
+  p.email = "opensource@thinkrelevance.com"
   p.url = "http://opensource.thinkrelevance.com"
 end
 
