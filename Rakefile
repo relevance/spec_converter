@@ -8,6 +8,7 @@ require 'rcov/rcovtask'
 Hoe.new('SpecConverter', SpecConverter::VERSION) do |p|
   p.rubyforge_name = "spec-converter"
   p.name = 'spec-converter'
+  p.remote_rdoc_dir = 'rdoc'
   p.summary = "Convert your tests to test/spec specs"
   p.author = "Relevance"
   p.email = "opensource@thinkrelevance.com"
