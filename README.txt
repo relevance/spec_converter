@@ -7,7 +7,7 @@
   This will change all files in place!!  Make sure you are properly backed up and/or committed to SVN before running.
 	
 == INSTALL
-  sudo gem install spec_converter
+  sudo gem install spec-converter
 
 == USAGE
 Assuming your project is at ~/work/project/:
