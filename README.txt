@@ -1,4 +1,4 @@
-SpecConverter
+= spec_converter
 
 == DESCRIPTION
   Simple converter to go from test-unit or dust style tests to test-spec (http://rubyforge.org/projects/test-spec) specs.
