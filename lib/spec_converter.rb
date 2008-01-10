@@ -1,7 +1,7 @@
 # Simple converter to go to test/spec style
 # This will change all files in place, so make sure you are properly backed up and/or committed to SVN!
 class SpecConverter
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
   
   def self.start
     spec_converter = SpecConverter.new
