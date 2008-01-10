@@ -110,6 +110,10 @@ describe "converting Test::Unit methods to it blocks" do
     @converter.convert_line(%[def setup]).should == %[before do]
   end
 
+  it "ignores method definitions that only start with setup" do
+    @converter.convert_line(%[def setup_my_object]).should == %[def setup_my_object]
+  end
+
   it "replaces class def test_something? with it something?  do" do
     @converter.convert_line(%[def test_something?]).should == %[it "something?" do]
   end
