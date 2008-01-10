@@ -42,7 +42,7 @@ class SpecConverter
   private
 
   def convert_def_setup(line)
-    line.gsub!(/(^\s*)def setup\s*$/, '\1before do')
+    line.gsub!(/(^\s*)def setup(\s*)$/, '\1before do\2')
   end
   
   def convert_rspec_old_style_names(line)
