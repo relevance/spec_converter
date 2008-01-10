@@ -35,10 +35,15 @@ class SpecConverter
     convert_dust_style(line)
     convert_test_unit_class_name(line)
     convert_test_unit_methods(line)
+    convert_def_setup(line)
     line
   end
   
   private
+
+  def convert_def_setup(line)
+    line.gsub!(/(^\s*)def setup/, '\1before do')
+  end
   
   def convert_rspec_old_style_names(line)
     line.gsub!(/(^\s*)context(\s.*do)/, '\1describe\2')

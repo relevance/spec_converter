@@ -5,7 +5,7 @@ require 'tempfile'
 require File.dirname(__FILE__) + '/../lib/spec_converter'
 
 describe "converting from test/spec old style to new style names" do
-  setup do
+  before do
     @converter = SpecConverter.new
   end
   
@@ -53,7 +53,7 @@ describe "translate file overwrites old file with translated stuff" do
 end
 
 describe "converting dust style to test/spec style" do
-  setup do
+  before do
     @converter = SpecConverter.new
   end
   
@@ -68,7 +68,7 @@ describe "converting dust style to test/spec style" do
 end
 
 describe "converting ActionController::IntegrationTest style to describe blocks" do
-  setup do
+  before do
     @converter = SpecConverter.new
   end
 
@@ -78,7 +78,7 @@ describe "converting ActionController::IntegrationTest style to describe blocks"
 end
 
 describe "converting Test::Unit style to describe blocks" do
-  setup do
+  before do
     @converter = SpecConverter.new
   end
 
@@ -102,8 +102,16 @@ describe "converting Test::Unit style to describe blocks" do
 end
 
 describe "converting Test::Unit methods to it blocks" do
-  setup do
+  before do
     @converter = SpecConverter.new
+  end
+  
+  it "replaces def setup with before do" do
+    @converter.convert_line(%[def setup]).should == %[before do]
+  end
+
+  it "replaces class def test_something? with it something?  do" do
+    @converter.convert_line(%[def test_something?]).should == %[it "something?" do]
   end
 
   it "replaces class def test_something? with it something?  do" do
@@ -129,7 +137,7 @@ describe "converting Test::Unit methods to it blocks" do
 end
 
 describe "converting things in batch" do
-  setup do
+  before do
     @converter = SpecConverter.new
   end
   
