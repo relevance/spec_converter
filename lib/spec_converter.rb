@@ -1,7 +1,7 @@
 # Simple converter to go to test/spec style
 # This will change all files in place, so make sure you are properly backed up and/or committed to SVN!
 class SpecConverter
-  VERSION = "0.0.2"
+  VERSION = "0.0.3"
   
   def self.start
     spec_converter = SpecConverter.new
@@ -36,6 +36,7 @@ class SpecConverter
     convert_test_unit_class_name(line)
     convert_test_unit_methods(line)
     convert_def_setup(line)
+    convert_assert(line)
     line
   end
   
@@ -61,5 +62,12 @@ class SpecConverter
   
   def convert_dust_style(line)
     line.gsub!(/(^\s*)test(\s.*do)/, '\1it\2')
+  end
+  
+  def convert_assert(line)
+    line.gsub!(/(^\s*)assert\s+([^\s]*)\s*([<=>~]+)\s*(.*)$/, '\1\2.should \3 \4' )
+    line.gsub!(/(^\s*)assert\s+\!(.*)$/, '\1\2.should.not == true' )
+    line.gsub!(/(^\s*)assert\s+(.*)$/, '\1\2.should.not == nil' )
+    line.gsub!(/(^\s*)assert_equal\s+([^\(.]*),\s*(.*)$/, '\1\3.should == \2' )
   end
 end
