@@ -1,6 +1,6 @@
 == 0.0.4 not yet released
 
 * added history.txt to track things -- is there some way to do this easily and automatically via trac change logs?
-* added more assert -> should conersions
 
 == 0.0.3 1/19/2008
+* added more assert -> should conversions
