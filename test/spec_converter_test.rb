@@ -134,8 +134,8 @@ describe "converting Test::Unit methods to it blocks" do
     @converter.convert_line(%[    assert !foo]).should == %[    foo.should.not == true]
   end
   
-  it "replaces assert_equal foo, bar to bar.should == foo" do
-    @converter.convert_line(%[    assert_equal foo, bar(x,y)]).should == %[    bar(x,y).should == foo]
+  it "replaces assert_equal y, x, bar to x.should == y" do
+    @converter.convert_line(%[    assert_equal "$1,490.00", x["price"]]).should == %[    x["price"].should == "$1,490.00"]
   end
   
   it "replaces assert foo to foo.should == true" do
