@@ -8,7 +8,7 @@ require 'rcov/rcovtask'
 Hoe.new('SpecConverter', SpecConverter::VERSION) do |p|
   p.rubyforge_name = "spec-converter"
   p.description = "Convert your tests to test/spec specs.  See http://opensource.thinkrelevance.com/wiki/spec-converter for details."
-  p.changes = "First public release"
+  p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
   p.name = 'spec-converter'
   p.remote_rdoc_dir = 'rdoc'
   p.summary = "Convert your tests to test/spec specs"
@@ -40,7 +40,7 @@ namespace :test do
   end
 end
 
-desc 'Test the relevance_tools plugin.'
+desc 'Run all tests.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
