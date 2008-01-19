@@ -68,7 +68,6 @@ class SpecConverter
     line.gsub!(/(^\s*)assert\s+([^\s]*)\s*([<=>~]+)\s*(.*)$/, '\1\2.should \3 \4' )
     line.gsub!(/(^\s*)assert\s+\!(.*)$/, '\1\2.should.not == true' )
     line.gsub!(/(^\s*)assert\s+(.*)$/, '\1\2.should.not == nil' )
-    /"[^"]+"|[^,]+/
-    line.gsub!(/(^\s*)assert_equal\s+("[^"]+"|[^,]+),\s*("[^"]+"|[^,]+)$/, '\1\3.should == \2' )
+    line.gsub!(/(^\s*)assert_equal\s+("[^"]+"|[^,]+),\s*("[^"]+"|[^,\n]+)$/, '\1\3.should == \2' )
   end
 end
