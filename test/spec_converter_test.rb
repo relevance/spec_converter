@@ -130,6 +130,21 @@ describe "converting Test::Unit methods to it blocks" do
     @converter.convert_line(%[   def test_something_here]).should == %[   it "something here" do]
   end
   
+  it "ignores unrelated lines" do
+    @converter.convert_line(%[def foo]).should == %[def foo]
+  end
+  
+  it "ignores unrelated lines with leading whitespace" do
+    @converter.convert_line(%[   def foo]).should == %[   def foo]
+  end
+
+end
+
+describe "converting assertions" do
+  before do
+    @converter = SpecConverter.new
+  end
+  
   it "replaces assert !foo to foo.should == false" do
     @converter.convert_line(%[    assert !foo]).should == %[    foo.should.not == true]
   end
@@ -160,15 +175,6 @@ describe "converting Test::Unit methods to it blocks" do
   it "replaces assert foo > 20 to foo.should > 20" do
     @converter.convert_line(%[    assert foo > 20]).should == %[    foo.should > 20]
   end
-  
-  it "ignores unrelated lines" do
-    @converter.convert_line(%[def foo]).should == %[def foo]
-  end
-  
-  it "ignores unrelated lines with leading whitespace" do
-    @converter.convert_line(%[   def foo]).should == %[   def foo]
-  end
-
 end
 
 describe "converting things in batch" do
