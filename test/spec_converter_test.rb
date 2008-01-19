@@ -146,6 +146,14 @@ describe "converting Test::Unit methods to it blocks" do
     @converter.convert_line(%[    assert_nil foo]).should == %[    foo.should == nil]
   end
 
+  it "replaces assert_true foo to foo.should == true" do
+    @converter.convert_line(%[    assert_true foo]).should == %[    foo.should == true]
+  end
+
+  it "replaces assert_false foo to foo.should == false" do
+    @converter.convert_line(%[    assert_false foo]).should == %[    foo.should == false]
+  end
+
   it "replaces assert_not_nil foo to foo.should.not == nil" do
     @converter.convert_line(%[    assert_not_nil foo]).should == %[    foo.should.not == nil]
   end  
