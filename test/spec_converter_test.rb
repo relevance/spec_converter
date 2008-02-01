@@ -67,13 +67,17 @@ describe "converting dust style to test/spec style" do
 
 end
 
-describe "converting ActionController::IntegrationTest style to describe blocks" do
+describe "converting ActionController tests to describe blocks" do
   before do
     @converter = SpecConverter.new
   end
 
   it "replaces class FooTest < ActionController::IntegrationTest with describe foo do" do
     @converter.convert_line(%[class ResearchTest < ActionController::IntegrationTest]).should == %[describe "Research", ActionController::IntegrationTest do]
+  end
+  
+  it "replaces class FooControllerTest < ActionController::TestCase with describe foo do" do
+    @converter.convert_line(%[class ResearchControllerTest < ActionController::TestCase]).should == %[describe "ResearchController", ActionController::TestCase do]
   end
 end
 
