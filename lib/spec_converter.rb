@@ -53,7 +53,7 @@ class SpecConverter
 
   def convert_test_unit_class_name(line)
     line.gsub!(/^class\s*([\w:]+)Test\s*<\s*Test::Unit::TestCase/, 'describe "\1" do')
-    line.gsub!(/^class\s*([\w:]+)Test\s*<\s*ActionController::(IntegrationTest|TestCase)/, 'describe "\1", ActionController::\2 do')
+    line.gsub!(/^class\s*([\w:]+)Test\s*<\s*(ActiveSupport|ActionController)::(IntegrationTest|TestCase)/, 'describe "\1", \2::\3 do')
   end
   
   def convert_test_unit_methods(line)

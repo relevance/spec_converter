@@ -79,6 +79,10 @@ describe "converting ActionController tests to describe blocks" do
   it "replaces class FooControllerTest < ActionController::TestCase with describe foo do" do
     @converter.convert_line(%[class ResearchControllerTest < ActionController::TestCase]).should == %[describe "ResearchController", ActionController::TestCase do]
   end
+  
+  it "replaces class FooControllerTest < ActiveSupport::TestCase with describe foo do" do
+    @converter.convert_line(%[class ResearchControllerTest < ActiveSupport::TestCase]).should == %[describe "ResearchController", ActiveSupport::TestCase do]
+  end
 end
 
 describe "converting Test::Unit style to describe blocks" do
