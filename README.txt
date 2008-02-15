@@ -7,7 +7,7 @@
   This will change all files in place!!  Make sure you are properly backed up and/or committed to SVN before running.
 	
 == INSTALL
-  sudo gem install spec-converter
+  sudo gem install spec_converter
 
 == USAGE
 Assuming your project is at ~/work/project/:
@@ -19,7 +19,7 @@ Assuming your project is at ~/work/project/:
 * test/spec:  http://rubyforge.org/projects/test-spec
 * trac:				http://opensource.thinkrelevance.com/wiki/spec-converter
 * svn trunk: 	https://opensource.thinkrelevance.com/svn/spec_converter/trunk
-* rdoc:     	http://spec-converter.rubyforge.org/rdoc
+* rdoc:     	http://thinkrelevance.rubyforge.org/spec_converter/
 
 == LICENSE:
 
