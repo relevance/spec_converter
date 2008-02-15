@@ -7,13 +7,13 @@ require 'rcov/rcovtask'
 
 Hoe.new('spec_converter', SpecConverter::VERSION) do |p|
   p.rubyforge_name = "thinkrelevance"
-  p.description = "Convert your tests to test/spec specs.  See http://opensource.thinkrelevance.com/wiki/spec-converter for details."
+  p.description = "Convert your tests to test/spec specs.  See http://opensource.thinkrelevance.com/wiki/spec_converter for details."
   p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
   p.name = 'spec_converter'
   p.summary = "Convert your tests to test/spec specs"
   p.author = "Relevance"
   p.email = "opensource@thinkrelevance.com"
-  p.url = "http://opensource.thinkrelevance.com/wiki/spec-converter"
+  p.url = "http://opensource.thinkrelevance.com/wiki/spec_converter"
 end
 
 desc 'Default: run unit tests.'

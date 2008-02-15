@@ -17,7 +17,7 @@ Assuming your project is at ~/work/project/:
 
 == URLS:
 * test/spec:  http://rubyforge.org/projects/test-spec
-* trac:				http://opensource.thinkrelevance.com/wiki/spec-converter
+* trac:				http://opensource.thinkrelevance.com/wiki/spec_converter
 * svn trunk: 	https://opensource.thinkrelevance.com/svn/spec_converter/trunk
 * rdoc:     	http://thinkrelevance.rubyforge.org/spec_converter/
 
