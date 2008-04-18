@@ -1,14 +1,13 @@
 require 'rake'
 require 'rake/testtask'
 require 'rubygems'
-require 'hoe'
 require 'lib/spec_converter'
 require 'rcov/rcovtask'
+require 'echoe'
 
-Hoe.new('spec_converter', SpecConverter::VERSION) do |p|
+Echoe.new("spec_converter") do |p|
   p.rubyforge_name = "thinkrelevance"
   p.description = "Convert your tests to test/spec specs.  See http://opensource.thinkrelevance.com/wiki/spec_converter for details."
-  p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
   p.name = 'spec_converter'
   p.summary = "Convert your tests to test/spec specs"
   p.author = "Relevance"
