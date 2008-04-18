@@ -1,4 +1,4 @@
-README.txt
+README.rdoc
 CHANGELOG
 bin/spec_converter
 lib/spec_converter.rb

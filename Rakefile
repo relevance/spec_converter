@@ -13,6 +13,9 @@ Echoe.new("spec_converter") do |p|
   p.author = "Relevance"
   p.email = "opensource@thinkrelevance.com"
   p.url = "http://opensource.thinkrelevance.com/wiki/spec_converter"
+  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|MIT-LICENSE$/
+  rdoc_template = `allison --path`.strip << ".rb"
+  p.rdoc_template = rdoc_template
 end
 
 desc 'Default: run unit tests.'
