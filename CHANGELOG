@@ -1,3 +1,5 @@
+v0.5.1. Moved to github
+
 v0.5. converting to echoe for gem-ing
 
 v0.0.4. added history.txt to track things -- is there some way to do this easily and automatically via trac change logs? ; added conversion for ActionController::TestCase ; added conversion for ActiveSupport::TestCase ; move from rubyforge project spec-converter to thinkrelevance package spec_converter
