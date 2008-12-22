@@ -17,9 +17,8 @@ Assuming your project is at ~/work/project/:
 
 == URLS:
 * test/spec:     http://rubyforge.org/projects/test-spec
-* trac:				   http://opensource.thinkrelevance.com/wiki/spec_converter
 * git clone url: git://github.com/relevance/spec_converter.git
-* rdoc:     	   http://thinkrelevance.rubyforge.org/spec_converter/
+* rdoc:     	 http://thinkrelevance.rubyforge.org/spec_converter/
 
 == LICENSE:
 
