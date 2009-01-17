@@ -4,56 +4,36 @@ require 'rubygems'
 require 'lib/spec_converter'
 require 'rcov/rcovtask'
 require 'echoe'
+gem "spicycode-micronaut"
+require 'micronaut'
+require 'micronaut/rake_task'
 
 Echoe.new("spec_converter") do |p|
   p.rubyforge_name = "thinkrelevance"
-  p.description = "Convert your tests to test/spec specs.  See http://opensource.thinkrelevance.com/wiki/spec_converter for details."
+  p.description = "Convert your tests to test/spec specs.  See http://github.com/relevance/spec_converter/ for details."
   p.name = 'spec_converter'
   p.summary = "Convert your tests to test/spec specs"
   p.author = "Relevance"
   p.email = "opensource@thinkrelevance.com"
-  p.url = "http://opensource.thinkrelevance.com/wiki/spec_converter"
+  p.url = "http://github.com/relevance/spec_converter/"
   p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|MIT-LICENSE$/
   rdoc_template = `allison --path`.strip << ".rb"
   p.rdoc_template = rdoc_template
 end
 
-desc 'Default: run unit tests.'
-task :default => :test
+task(:default).clear
 
-desc 'Default for CruiseControl'
-task :cruise => ['test', 'test:flog']
+desc 'Default: run examples.'
+task :default => :examples
 
-desc 'Test for flog failure'
-namespace :test do
-  task :flog do
-    threshold = (ENV['FLOG_THRESHOLD'] || 120).to_i
-    dirs = %w(lib tasks test)
-    result = IO.popen("flog #{dirs.join(' ')} 2>/dev/null | grep \"(\" | grep -v \"main#none\" | head -n 1").readlines.join('')
-    result =~ /\((.*)\)/
-    flog = $1.to_i
-    result =~ /^(.*):/
-    method = $1
-    if flog > threshold
-      raise "FLOG failed for #{method} with score of #{flog} (threshold is #{threshold})."
-    end  
-    puts "FLOG passed, with highest score being #{flog} for #{method}."
+desc "Run all micronaut examples"
+Micronaut::RakeTask.new(:examples)
+
+namespace :examples do
+  desc "Run all micronaut examples using rcov"
+  Micronaut::RakeTask.new :coverage do |t|
+    t.pattern = "examples/**/*_example.rb"
+    t.rcov = true
+    t.rcov_opts = %[--exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
   end
 end
-
-desc 'Run all tests.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
-
-Rcov::RcovTask.new("rcov") do |t|
-  rcov_output = "tmp/coverage"
-  FileUtils.mkdir_p rcov_output unless File.exist? rcov_output
-  t.libs << "lib"
-  t.test_files = FileList["test/**/*_test.rb"]
-  t.output_dir = "#{rcov_output}/"
-  t.verbose = true
-  t.rcov_opts = ["-x", "^/Library", "--sort coverage"]
-end          

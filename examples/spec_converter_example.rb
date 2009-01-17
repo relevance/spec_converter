@@ -1,8 +1,14 @@
 require 'rubygems'
-require 'test/spec'
+gem "spicycode-micronaut"
+require 'micronaut'
+require 'micronaut/rake_task'
 require 'mocha'
 require 'tempfile'
 require File.dirname(__FILE__) + '/../lib/spec_converter'
+
+Micronaut.configure do |config|
+  config.mock_with :mocha
+end
 
 describe "converting from test/spec old style to new style names" do
   before do
