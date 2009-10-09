@@ -1,39 +1,48 @@
 require 'rake'
-require 'rake/testtask'
-require 'rubygems'
-require 'lib/spec_converter'
-require 'rcov/rcovtask'
-require 'echoe'
-gem "spicycode-micronaut"
-require 'micronaut'
-require 'micronaut/rake_task'
 
-Echoe.new("spec_converter") do |p|
-  p.rubyforge_name = "thinkrelevance"
-  p.description = "Convert your tests to test/spec specs.  See http://github.com/relevance/spec_converter/ for details."
-  p.name = 'spec_converter'
-  p.summary = "Convert your tests to test/spec specs"
-  p.author = "Relevance"
-  p.email = "opensource@thinkrelevance.com"
-  p.url = "http://github.com/relevance/spec_converter/"
-  p.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc|CHANGELOG|MIT-LICENSE$/
-  rdoc_template = `allison --path`.strip << ".rb"
-  p.rdoc_template = rdoc_template
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "spec_convertor"
+    gem.summary = "Convert your tests to test/spec specs.  See http://github.com/relevance/spec_converter/ for details."
+    gem.email = "rsanheim@gmail.com"
+    gem.homepage = "http://github.com/relevance/spec_converter"
+    gem.authors = ["Relevance"]
+    gem.add_development_dependency "mocha", ">= 0.9.0"
+    gem.add_development_dependency "micronaut", ">= 0.3.0"
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-task(:default).clear
+require 'micronaut/rake_task'
+Micronaut::RakeTask.new(:examples) do |examples|
+  examples.pattern = 'examples/**/*_example.rb'
+  examples.ruby_opts << '-Ilib -Iexamples'
+end
 
-desc 'Default: run examples.'
-task :default => :examples
+Micronaut::RakeTask.new(:rcov) do |examples|
+  examples.pattern = 'examples/**/*_example.rb'
+  examples.rcov_opts = '-Ilib -Iexamples'
+  examples.rcov = true
+end
 
-desc "Run all micronaut examples"
-Micronaut::RakeTask.new(:examples)
+task :default => [:check_dependencies, :examples]
 
-namespace :examples do
-  desc "Run all micronaut examples using rcov"
-  Micronaut::RakeTask.new :coverage do |t|
-    t.pattern = "examples/**/*_example.rb"
-    t.rcov = true
-    t.rcov_opts = %[--exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
-  end
+begin
+  %w{sdoc sdoc-helpers rdiscount}.each { |name| gem name }
+  require 'sdoc_helpers'
+rescue LoadError => ex
+  puts "sdoc support not enabled:"
+  puts ex.inspect
+end
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ''
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "chatterbox #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
