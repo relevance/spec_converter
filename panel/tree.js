@@ -1,0 +1,1 @@
+var tree = [["","","files",[["LICENSE","files/LICENSE.html","",[]],["README.rdoc","files/README_rdoc.html","",[]],["","","lib",[["spec_converter.rb","files/lib/spec_converter_rb.html","",[]]]]]],["SpecConverter","classes/SpecConverter.html"," < Object",[]]]
