@@ -3,7 +3,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "spec_convertor"
+    gem.name = "spec_converter"
     gem.summary = "Convert your tests to test/spec specs.  See http://github.com/relevance/spec_converter/ for details."
     gem.email = "rsanheim@gmail.com"
     gem.homepage = "http://github.com/relevance/spec_converter"
