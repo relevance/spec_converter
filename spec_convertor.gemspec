@@ -24,7 +24,8 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/spec_converter",
      "examples/spec_converter_example.rb",
-     "lib/spec_converter.rb"
+     "lib/spec_converter.rb",
+     "spec_convertor.gemspec"
   ]
   s.homepage = %q{http://github.com/relevance/spec_converter}
   s.rdoc_options = ["--charset=UTF-8"]
