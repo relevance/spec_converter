@@ -29,6 +29,7 @@ Micronaut::RakeTask.new(:rcov) do |examples|
 end
 
 task :default => [:check_dependencies, :examples]
+task :release => ['gemcutter:release']
 
 begin
   %w{sdoc sdoc-helpers rdiscount}.each { |name| gem name }
