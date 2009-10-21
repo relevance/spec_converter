@@ -4,7 +4,7 @@
   Simple converter to go from test-unit or dust style tests to test-spec (http://rubyforge.org/projects/test-spec) specs.
 
 == FEATURES/PROBLEMS
-  This will change all files in place!!  Make sure you are properly backed up and/or checked in before running.
+  This will change all files in place!  Make sure you are properly backed up and/or checked in before running.
 	
 == INSTALL
   sudo gem install spec_converter
